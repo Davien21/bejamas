@@ -1,0 +1,15 @@
+section#about .category {
+  color: var(--app-primary-grey);
+}
+
+section#about .description {
+  color: var(--app-secondary-grey);
+}
+
+section#about .alt-products > div {
+  height: 100%;
+}
+
+section#about .specifications {
+  color: var(--app-primary-grey);
+}
