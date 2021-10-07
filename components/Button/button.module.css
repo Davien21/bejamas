@@ -1,0 +1,15 @@
+button.container {
+  text-transform: uppercase;
+  width: 100%;
+  padding: 10px 25px;
+}
+
+.primary {
+  color: #fff;
+  background-color: #000;
+}
+
+.secondary {
+  background-color: #fff;
+  color: #000;
+}
