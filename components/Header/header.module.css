@@ -1,0 +1,9 @@
+.container {
+  border-top: 1px solid rgba(255, 255, 255, 0.5);
+  border-left: 1px solid rgba(255, 255, 255, 0.5);
+  background: rgba(255, 255, 255, 0.5);
+  backdrop-filter: blur(4px);
+  position: sticky;
+  z-index: 1000;
+  top: 0;
+}
