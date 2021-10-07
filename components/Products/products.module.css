@@ -1,0 +1,6 @@
+.container {
+}
+
+.container .category {
+  color: var(--app-secondary-grey);
+}
