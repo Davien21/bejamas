@@ -10,15 +10,11 @@ import styles from "./products.module.css";
 
 function Products(props) {
   const [categoryFilters, setCategoryFilters] = useState(getCategoryFilters());
-  const [priceFilters, setPriceFilters] = useState(getPriceFilters());
+  const [activePriceFilter, setActivePriceFilter] = useState("All");
+  const [sortOrder, setSortOrder] = useState("price");
+  const [sortPath, setSortPath] = useState("asc");
+  const [orderOptions] = useState(["price", "name"]);
 
-  let activePriceFilter;
-  activePriceFilter = priceFilters.forEach((filter) => {
-    const name = Object.values(filter)[0];
-    console.log(filter, filter[name]);
-    if (filter[name] === true) activePriceFilter = name;
-  });
-  console.log(priceFilters, activePriceFilter);
   return (
     <div className={`${styles["container"]} my-5`}>
       <div className="flex justify-between gap-1 items-center mb-10">
@@ -29,7 +25,13 @@ function Products(props) {
         </div>
         <div id="filters">
           <div className="hidden md:block">
-            <ToggleFilter />
+            <ToggleFilter
+              options={orderOptions}
+              sortOrder={sortOrder}
+              onChangeOrder={setSortOrder}
+              sortPath={sortPath}
+              onChangePath={setSortPath}
+            />
           </div>
           <div className="md:hidden">
             <FilterIcon />
@@ -44,19 +46,21 @@ function Products(props) {
             onFilter={setCategoryFilters}
           />
           <RadioFilter
+            activeFilter={activePriceFilter}
+            onFilter={setActivePriceFilter}
             title="Price"
-            filters={priceFilters}
-            onFilter={setPriceFilters}
+            filters={getPriceFilters()}
           />
         </div>
         <div id="product-grid" className="col-span-5 md:col-span-4">
           <ProductGrid
             categoryFilters={categoryFilters}
             activePriceFilter={activePriceFilter}
+            sortPath={sortPath}
+            sortOrder={sortOrder}
           />
         </div>
       </div>
-      
     </div>
   );
 }

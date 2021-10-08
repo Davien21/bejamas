@@ -11,12 +11,7 @@ function getCategoryFilters() {
 }
 
 function getPriceFilters() {
-  return [
-    { "lower than $20": false },
-    { "$20 - $100": false },
-    { "$100 - $200": false },
-    { "more than $200": false },
-  ];
+  return ["lower than $20", "$20 - $100", "$100 - $200", "more than $200"];
 }
 
 export { getCategoryFilters, getPriceFilters };

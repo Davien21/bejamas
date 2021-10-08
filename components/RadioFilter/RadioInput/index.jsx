@@ -2,17 +2,12 @@ import React from "react";
 import { CheckboxIcon } from "../../../assets/images";
 import styles from "./radio-input.module.css";
 
-function RadioInput({ filter, allFilters, onFilter, label, filterIndex }) {
-  const isChecked = filter[label];
+function RadioInput({ filter, activeFilter, onFilter, filterIndex }) {
+  const isChecked = filter == activeFilter;
 
   const toggleIsChecked = () => {
-    let updatedFilters = [...allFilters];
-    updatedFilters.forEach((filter, index) => {
-      const name = Object.keys(filter)[0];
-      if (label === name) filter[name] = true;
-      if (label !== name) filter[name] = false;
-    });
-    onFilter(updatedFilters);
+    if (filter == activeFilter) return onFilter("all");
+    onFilter(filter);
   };
 
   return (
@@ -35,7 +30,7 @@ function RadioInput({ filter, allFilters, onFilter, label, filterIndex }) {
         className="capitalize cursor-pointer"
         onClick={() => toggleIsChecked()}
       >
-        {label}
+        {filter}
       </label>
     </div>
   );

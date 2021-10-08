@@ -37,3 +37,13 @@ hr.hr-sm {
 hr.hr-lg {
   border-top: 4px solid #e4e4e4;
 }
+
+select {
+  padding: 6px 12px;
+  cursor: pointer;
+  text-transform: capitalize;
+}
+
+.app-text-grey {
+  color: var(--app-primary-grey);
+}

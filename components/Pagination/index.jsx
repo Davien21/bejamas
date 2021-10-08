@@ -10,6 +10,7 @@ const Pagination = ({ itemsCount, pageSize, onPageChange, currentPage }) => {
   let listClass = (page) => (page == currentPage ? styles["active"] : "");
 
   if (pagesCount === 1) return null;
+  // if (itemsCount == 0) return null;
   const pages = _.range(1, pagesCount + 1);
 
   return (
@@ -43,13 +44,6 @@ const Pagination = ({ itemsCount, pageSize, onPageChange, currentPage }) => {
       </ul>
     </nav>
   );
-};
-
-Pagination.propTypes = {
-  itemsCount: PropTypes.number.isRequired,
-  pageSize: PropTypes.number.isRequired,
-  onPageChange: PropTypes.func.isRequired,
-  currentPage: PropTypes.number,
 };
 
 export default Pagination;

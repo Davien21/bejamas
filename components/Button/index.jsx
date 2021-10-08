@@ -2,12 +2,12 @@ import React from "react";
 
 import styles from "./button.module.css";
 
-function Button({ type, text }) {
+function Button({ type, text, onClick }) {
   if (!type) type = "primary";
 
   return (
     // <div>
-    <button className={`${styles["container"]} ${styles[type]}`}>{text}</button>
+    <button onClick={onClick} className={`${styles["container"]} ${styles[type]}`}>{text}</button>
     // </div>
   );
 }

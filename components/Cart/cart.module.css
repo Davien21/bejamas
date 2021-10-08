@@ -1,0 +1,67 @@
+.container {
+  position: relative;
+}
+
+.container .counter {
+  background-color: #000;
+  color: #fff;
+  position: absolute;
+  padding: 2px 5px;
+  font-size: 14px;
+  right: 0;
+  border-radius: 5px;
+  z-index: 101;
+}
+
+.cart-window {
+  display: none !important;
+  position: absolute;
+  top: 43px;
+  right: 0px;
+  z-index: 100;
+  background-color: #fff;
+  padding: 0rem 1.5rem 1.5rem 1.5rem;
+  border: 4px solid #e4e4e4;
+  min-width: 350px;
+  max-height: 80vh;
+  overflow: auto;
+  scrollbar-width: 10px;
+}
+
+
+.active {
+  display: block !important;
+}
+
+
+.cart-window .img-container div {
+  width: 100%;
+}
+
+.cart-window .img-container img {
+  max-height: 100px;
+  width: 100%;
+  object-fit: cover;
+}
+
+
+
+.cart-window hr{
+ width: 100%;
+}
+
+.close {
+  position: sticky;
+  top: 20px;
+  right: 0;
+  z-index: 102;
+  margin: 1.25rem 0rem;
+}
+
+
+.close svg {
+  position: relative;
+  z-index: 102;
+  cursor: pointer;
+  /* background-color: #fff; */
+}

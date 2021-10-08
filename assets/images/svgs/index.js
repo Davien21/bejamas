@@ -7,6 +7,7 @@ import FilterIcon from "./filter.svg";
 import CheckboxIcon from "./checkbox.svg";
 import LeftIcon from "./left.svg";
 import RightIcon from "./right.svg";
+import CloseIcon from "./close.svg";
 
 export {
   CartIcon,
@@ -18,4 +19,5 @@ export {
   CheckboxIcon,
   LeftIcon,
   RightIcon,
+  CloseIcon
 };

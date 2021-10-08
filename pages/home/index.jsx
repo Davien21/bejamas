@@ -1,23 +1,13 @@
 import Head from "next/head";
 import { Header, Products } from "../../components";
 import styles from "./home.module.css";
-import { useState } from "react";
 import FeaturedProduct from "../../components/FeaturedProduct";
 
-
-export default function Home({ name }) {
-  // const { data, error } = useSWR("/api/products", fetcher);
-
-  // console.log(data);
-  // if (error) return <div>failed to load</div>;
-  // if (!data) return <div>loading...</div>;
-
-  // const [products, setProducts] = useState([]);
-
+export default function Home({ cart, setCart }) {
+  console.log(cart, setCart)
   return (
     <>
       <Head>
-        <meta charset="utf-8" />
         <link rel="icon" href="./favicon.png" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta name="theme-color" content="#000000" />
@@ -31,7 +21,6 @@ export default function Home({ name }) {
         ></meta>
         <title>Bejamas Store | Home</title>
       </Head>
-      <Header />
       <main>
         <section id="featured-product">
           <div className="container py-5">

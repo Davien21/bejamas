@@ -1,3 +1,4 @@
+import _ from "lodash";
 import React, { useState } from "react";
 import { useProducts } from "../../hooks";
 import { ProductCard } from "../ProductCard";
@@ -6,36 +7,46 @@ import Pagination from "../Pagination";
 import { paginate, sortByCategory, sortByPrice } from "../../utils";
 import styles from "./product-grid.module.css";
 
-function ProductGrid({ categoryFilters, activePriceFilter }) {
+function ProductGrid({
+  categoryFilters,
+  activePriceFilter,
+  sortPath,
+  sortOrder,
+}) {
   const [currentPage, setCurrentPage] = useState(1);
-  const { products, isError, isLoading } = useProducts();
+  let { products, isError, isLoading } = useProducts();
 
   let sortedProducts = sortByCategory(categoryFilters, products);
-  // sortedProducts = sortByPrice(activePriceFilter, products);
+  sortedProducts = sortByPrice(activePriceFilter, sortedProducts);
+
+  sortedProducts = _.orderBy(sortedProducts, [sortPath], [sortOrder]);
 
   const finalProducts = paginate(sortedProducts, currentPage, 6);
   return (
-    <div className="grid grid-cols-1 md:grid-cols-3 gap-x-7 md:h-full">
-      {isLoading && <div>Loading...</div>}
-      {products && finalProducts.length == 0 && (
-        <div>There are no products</div>
+    <>
+      {isError && <div className="text-2xl">There was an error 😭...</div>}
+      {isLoading && <div className="text-2xl">Loading...</div>}
+      {!isLoading && !isError && products.length == 0 && (
+        <div className="text-2xl">There are no such products</div>
       )}
-      {finalProducts?.map((product) => (
-        <div key={product["ref"]["@ref"].id} className="">
-          <ProductCard
-            product={{ id: product["ref"]["@ref"].id, ...product.data }}
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-x-7 md:h-full">
+        {finalProducts?.map((product) => {
+          return (
+            <div key={product.id} className="">
+              <ProductCard product={product} />
+            </div>
+          );
+        })}
+        <div className="flex flex-col justify-end mx-auto mb-10 md:col-span-3">
+          <Pagination
+            itemsCount={sortedProducts?.length}
+            pageSize={6}
+            onPageChange={setCurrentPage}
+            currentPage={currentPage}
           />
         </div>
-      ))}
-      <div className="flex flex-col justify-end mx-auto mb-10 md:col-span-3">
-        <Pagination
-          itemsCount={products?.length}
-          pageSize={6}
-          onPageChange={setCurrentPage}
-          currentPage={currentPage}
-        />
       </div>
-    </div>
+    </>
   );
 }
 

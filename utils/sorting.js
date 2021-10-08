@@ -1,13 +1,20 @@
 function sortByPrice(filter, products) {
-  const sortedProducts = {
-    "lower than $20": () => products.map((product) => product.price < 20),
-    "$20 - $100": () =>
-      products.map((product) => product.price > 20 && product.price < 100),
-    "$100 - $200": () =>
-      products.map((product) => product.price > 100 && product.price < 200),
-    "more than $200": () => products.map((product) => product.price > 200),
-  };
-  console.log(sortedProducts[filter], filter)
+  if (filter == "lower than $20")
+    return products.filter((product) => product.price < 20);
+
+  if (filter == "$20 - $100")
+    return products.filter(
+      (product) => product.price > 20 && product.price < 100
+    );
+
+  if (filter == "$100 - $200")
+    return products.filter(
+      (product) => product.price > 100 && product.price < 200
+    );
+
+  if (filter == "more than $200")
+    return products.filter((product) => product.price > 200);
+
   return products;
 }
 
@@ -20,15 +27,13 @@ function sortByCategory(filters, products) {
 
   let sortedProducts = products;
 
-  
   if (categories.length > 0) {
     sortedProducts = products?.filter((product) =>
-    categories.includes(product.data.category)
+      categories.includes(product.category)
     );
   }
-  
-  console.log(sortedProducts)
-  return sortedProducts
+
+  return sortedProducts;
 }
 
 export { sortByPrice, sortByCategory };

@@ -25,3 +25,15 @@
     min-height: auto;
   }
 }
+
+@media screen and (min-width: 768px) {
+  .image img {
+    object-fit: cover;
+    max-height: 76vh;
+    width: 100%;
+  }
+  .image {
+    height: 76vh;
+    width: 100%;
+  }
+}

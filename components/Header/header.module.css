@@ -7,3 +7,31 @@
   z-index: 1000;
   top: 0;
 }
+
+.cart-window {
+  /* position: absolute; */
+  /* right: 1.2rem; */
+  z-index: 100;
+  background-color: #fff;
+  padding: 40px 10px 10px 10px;
+  border: 1px solid black;
+}
+
+/* @media screen and (min-width: 992px) {
+  .cart-window {
+    right: 4.5rem;
+  }
+}
+
+@media screen and (min-width: 1536px) {
+  .cart-window {
+    right: 6rem;
+  }
+}
+
+@media screen and (min-width: 1800px) {
+  .cart-window {
+    right: auto;
+    left: calc(100vw - 100px)
+  }
+} */

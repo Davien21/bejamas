@@ -1,107 +1,126 @@
 import React from "react";
-import { useProducts } from "../../hooks";
+import { useProducts, useToggleToCart } from "../../hooks";
 import { Button } from "../../components";
 import Image from "next/image";
 import { product1, product2, product3, product4 } from "../../assets/images";
-import styles from "./featured-product.module.css";
+const fetcher = (url) => fetch(url).then((res) => res.json());
 
-function FeaturedProduct(props) {
-  const products = useProducts();
+import styles from "./featured-product.module.css";
+import { formatSize, getBlurPath } from "../../utils";
+import { useCartContext } from "../../contexts";
+
+const FeaturedProduct = (props) => {
+  const { products, isError, isLoading } = useProducts();
+  const featuredProduct = products?.find((product) => product.featured);
+  const category = featuredProduct?.category;
+  const recommendations = products.filter(
+    (product) => product.category === category
+  );
+  const { cart, setCart } = useCartContext();
+  const { toggleCart, isInCart } = useToggleToCart({
+    product: featuredProduct,
+    cart,
+    setCart,
+  });
 
   return (
-    <div className={""}>
-      <div
-        id={`${styles["photo-of-the-day"]}`}
-        className={`mb-10 grid grid-cols-6 md:justify-between items-center`}
-      >
-        <div className="order-1 col-span-full md:col-span-3 my-6 ">
-          <span className="text-2xl md:text-4xl font-semibold">
-            Samurai King Resting
-          </span>
-        </div>
-        <div className="order-3 md:order-2 col-span-full md:col-span-2 md:col-start-5 xl:col-start-6">
-          <Button text="Add to Cart" />
-        </div>
-
-        <div className="order-2 md:order-3 col-span-full mb-6 md:mb-0 relative row-start-2">
-          <div className={`${styles["image"]}`}>
-            <Image
-              src={product1}
-              q="100"
-              layout={"responsive"}
-              objectFit="cover"
-              objectPosition="left"
-            />
-          </div>
-          <div className="absolute bottom-0 bg-white px-3 py-2 border-b font-semibold">
-            <span>Photo of the day</span>
-          </div>
-        </div>
-      </div>
-      <div id={styles["about"]} className="grid grid-cols-8 md:gap-10">
-        <div className="col-span-full md:col-span-5 mb-10 mb-md-0">
-          <p className={`text-2xl font-semibold `}>
-            About the Samurai King Resting
-          </p>
-          <p className={`${styles["category"]} text-2xl my-2`}>Pets</p>
-          <span className={`${styles["description"]}`}>
-            So how did the classical Latin become so incoherent? According to
-            McClintock, a 15th century typesetter likely scrambled part of
-            Cicero's De Finibus in order to provide placeholder text to mockup
-            various fonts for a type specimen book.So how did the classical
-            Latin become so incoherent? According to McClintock, a 15th century
-            typesetter likely scrambled part of Cicero's De Finibus in order to
-            provide placeholder text to mockup various fonts for a type specimen
-            book.So how did the classical Latin become so incoherent? According
-            to McClintock.
-          </span>
-        </div>
-        <div className="col-span-full md:col-span-3 md:text-right">
-          <p className={`text-2xl font-semibold mb-8`}>People also buy</p>
+    <>
+      {isError && <div className="text-2xl">There was an error 😭...</div>}
+      {isLoading && !featuredProduct && (
+        <div className="text-2xl my-5">Loading...</div>
+      )}
+      {!isLoading && !isError && products.length == 0 && (
+        <div className="text-2xl">There are no products in the database</div>
+      )}
+      {featuredProduct && (
+        <div className={""}>
           <div
-            className={`grid grid-cols-3 gap-6 lg:gap-8 md:justify-end mb-12 ${styles["alt-products"]}`}
+            id={`${styles["photo-of-the-day"]}`}
+            className={`mb-10 grid grid-cols-6 md:justify-between items-center`}
           >
-            <Image
-              className="h-full"
-              src={product2}
-              q="100"
-              layout="responsive"
-            />
-            <Image
-              className="h-full"
-              src={product3}
-              q="100"
-              layout="responsive"
-            />
-            <Image
-              className="h-full"
-              src={product4}
-              q="100"
-              layout="responsive"
-            />
-          </div>
-          <div className="md:text-right">
-            <p className={`text-2xl font-semibold mb-2`}>Details</p>
-            <div className={`${styles["specifications"]}`}>
-              <div id="dimensions" className={`flex md:justify-end mb-2`}>
-                <span>Size:</span>
-                <div className="mx-2">
-                  <span>1020</span>
-                  <span className="mx-2">X</span>
-                  <span>1020</span>
-                </div>
-                <span>Pixels</span>
+            <div className="order-1 col-span-full md:col-span-3 my-6 ">
+              <span className="text-2xl md:text-4xl font-semibold">
+                {featuredProduct?.name}
+              </span>
+            </div>
+            <div className="order-3 md:order-2 col-span-full md:col-span-2 md:col-start-5 xl:col-start-6">
+              <Button
+                onClick={() => toggleCart()}
+                text={isInCart ? "Remove From Cart" : "Add to Cart"}
+              />
+            </div>
+
+            <div className="grid grid-cols-1 order-2 md:order-3 col-span-full mb-6 md:mb-0 relative row-start-2">
+              <div className={`${styles["image"]}`}>
+                <Image
+                  src={featuredProduct?.image?.src}
+                  width="1920"
+                  height="1280"
+                  placeholder="blur"
+                  blurDataURL={getBlurPath(featuredProduct?.image?.src)}
+                />
               </div>
-              <div id="file-size" className="">
-                <span>Size:</span>
-                <span className="mx-2">15mb</span>
+              <div className="absolute bottom-0 bg-white px-3 py-2 border-b font-semibold">
+                <span>Photo of the day</span>
+              </div>
+            </div>
+          </div>
+          <div id={styles["about"]} className="grid grid-cols-8 md:gap-10">
+            <div className="col-span-full md:col-span-5 mb-10 mb-md-0">
+              <p className={`text-2xl font-semibold `}>
+                About the {featuredProduct?.name}
+              </p>
+              <p className={`${styles["category"]} text-2xl my-2`}>Pets</p>
+              <span className={`${styles["description"]}`}>
+                {featuredProduct?.description}
+              </span>
+            </div>
+            <div className="col-span-full md:col-span-3 md:text-right">
+              <p className={`text-2xl font-semibold mb-8`}>People also buy</p>
+              <div
+                className={`grid grid-cols-3 gap-6 lg:gap-8 md:justify-end mb-12 ${styles["alt-products"]}`}
+              >
+                {recommendations.map((product) => {
+                  return (
+                    <Image
+                      key={product.name}
+                      className="h-full"
+                      src={product.image.src}
+                      width="640"
+                      height="800"
+                      objectFit="cover"
+                      placeholder="blur"
+                      blurDataURL={getBlurPath(product.image.src)}
+                    />
+                  );
+                })}
+              </div>
+              <div className="md:text-right">
+                <p className={`text-2xl font-semibold mb-2`}>Details</p>
+                <div className={`${styles["specifications"]}`}>
+                  <div id="dimensions" className={`flex md:justify-end mb-2`}>
+                    <span>Size:</span>
+                    <div className="mx-2">
+                      <span>{featuredProduct?.details.dimensions.width}</span>
+                      <span className="mx-2">X</span>
+                      <span>{featuredProduct?.details.dimensions.width}</span>
+                    </div>
+                    <span>Pixels</span>
+                  </div>
+                  <div id="file-size" className="">
+                    <span>Size:</span>
+                    <span className="mx-2">
+                      {formatSize(featuredProduct?.details.size)}
+                    </span>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
         </div>
-      </div>
-    </div>
+      )}
+    </>
   );
-}
+};
 
 export default FeaturedProduct;
