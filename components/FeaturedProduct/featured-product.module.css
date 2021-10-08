@@ -1,0 +1,27 @@
+#about .category {
+  color: var(--app-primary-grey);
+}
+
+#about .description {
+  color: var(--app-secondary-grey);
+}
+
+#about .alt-products > div {
+  height: 100%;
+}
+
+#about .specifications {
+  color: var(--app-primary-grey);
+}
+
+#photo-of-the-day .image div {
+  width: 100%;
+  min-height: 250px;
+  height: 100%;
+}
+
+@media screen and (min-width: 768px) {
+  #photo-of-the-day .image div {
+    min-height: auto;
+  }
+}

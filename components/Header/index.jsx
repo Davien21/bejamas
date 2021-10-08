@@ -15,7 +15,7 @@ function Header(props) {
             <CartIcon />
           </div>
         </div>
-        <hr />
+        <hr className="hr-lg" />
       </div>
     </div>
   );

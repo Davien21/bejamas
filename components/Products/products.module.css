@@ -1,6 +1,9 @@
-.container {
-}
-
 .container .category {
   color: var(--app-secondary-grey);
+}
+
+#filters {
+  position: sticky;
+  top: 80px;
+  height: max-content;
 }

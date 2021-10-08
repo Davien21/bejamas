@@ -9,13 +9,7 @@
 :root {
   --app-primary-grey: #656565;
   --app-secondary-grey: #9b9b9b;
-  --app-blue-light: #f8fafc;
   --app-primary-text: archivo;
-  --app-primary-green: #00d6a3;
-  --app-green-fade: #87e5d8;
-  --app-border-radius-sm: 10px;
-  --app-border-radius-md: 15px;
-  --app-border-radius-lg: 30px;
 }
 
 * {
@@ -36,6 +30,10 @@ li {
   list-style: none;
 }
 
-hr {
+hr.hr-sm {
+  border-top: 1px solid #c2c2c2;
+}
+
+hr.hr-lg {
   border-top: 4px solid #e4e4e4;
 }
