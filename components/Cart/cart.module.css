@@ -29,6 +29,7 @@
   padding: 0rem 1.5rem 1.5rem 1.5rem;
   border: 4px solid #e4e4e4;
   min-width: 250px;
+  max-width: 90vw;
   max-height: 80vh;
   overflow: auto;
   scrollbar-width: 10px;
@@ -36,8 +37,7 @@
 
 @media screen and (min-width: 360px) {
   .cart-window {
-    max-width: 90vw;
-    min-width: 336px;
+    min-width: 322px;
     max-height: 80vh;
     overflow: auto;
     scrollbar-width: 10px;
