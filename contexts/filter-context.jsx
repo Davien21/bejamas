@@ -1,11 +1,21 @@
-import { createContext, useContext, useState } from "react";
+import { createContext, useContext, useState, useEffect } from "react";
 import { getCategoryFilters, getPriceFilters } from "../utils";
 
 const FilterContext = createContext();
 
 export function FilterProvider({ children }) {
-  const [categoryFilters, setCategoryFilters] = useState(getCategoryFilters());
-  const [activePriceFilter, setActivePriceFilter] = useState("All");
+  const [isCleared, setIsCleared] = useState(false);
+  
+  const allCategories = getCategoryFilters();
+  const [categoryFilters, setCategoryFilters] = useState(allCategories);
+  const [activePriceFilter, setActivePriceFilter] = useState("all");
+
+  useEffect(() => {
+    if (!isCleared) return;
+    setCategoryFilters(allCategories);
+    setActivePriceFilter("all");
+    setIsCleared(false);
+  }, [isCleared]);
 
   return (
     <FilterContext.Provider
@@ -15,6 +25,7 @@ export function FilterProvider({ children }) {
         activePriceFilter,
         setActivePriceFilter,
         priceFilters: getPriceFilters(),
+        clearFilters: () => setIsCleared(true),
       }}
     >
       {children}

@@ -53,7 +53,7 @@ function Products(props) {
           </div>
         </div>
       </div>
-      <div className="grid grid-cols-5 gap-x-8">
+      <div className="grid grid-cols-5 md:gap-x-8">
         <div id={`${styles["filters"]}`} className="hidden md:block col-span-1">
           <p className="font-semibold mb-6 text-xl">Category</p>
           <MultipleFilter

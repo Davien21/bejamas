@@ -6,9 +6,12 @@ function Button({ type, text, onClick }) {
   if (!type) type = "primary";
 
   return (
-    // <div>
-    <button onClick={onClick} className={`${styles["container"]} ${styles[type]}`}>{text}</button>
-    // </div>
+    <button
+      onClick={onClick}
+      className={`${styles["container"]} ${styles[type]}`}
+    >
+      {text}
+    </button>
   );
 }
 

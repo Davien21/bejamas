@@ -13,15 +13,20 @@ function ToggleFilter({
 }) {
   return (
     <div className="flex items-center">
-      <div className="flex gap-2">
-        <AscendingIcon
+      <div className="flex items-center">
+        <div
           onClick={() => onChangeOrder("asc")}
-          className="cursor-pointer"
-        />
-        <DescendingIcon
+          className={`${styles["svg-container"]}`}
+        >
+          <AscendingIcon className="cursor-pointer " />
+        </div>
+
+        <div
           onClick={() => onChangeOrder("desc")}
-          className="cursor-pointer"
-        />
+          className={`${styles["svg-container"]}`}
+        >
+          <DescendingIcon className="cursor-pointer" />
+        </div>
       </div>
       <div className="flex items-center">
         <span className={`${styles["grey-font"]} mx-2`}>Sort By</span>

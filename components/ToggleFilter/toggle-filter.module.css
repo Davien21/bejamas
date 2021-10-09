@@ -1,3 +1,14 @@
 .grey-font {
   color: var(--app-primary-grey);
 }
+
+div.svg-container {
+  padding: 0.75rem 0.875rem;
+  border-radius: 0.5rem;
+}
+
+
+div.svg-container:hover {
+  cursor: pointer;
+  outline: 2px solid black;
+}

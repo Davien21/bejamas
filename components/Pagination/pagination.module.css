@@ -13,12 +13,19 @@
 }
 
 .container li {
-  padding: 0px 1rem;
+  padding: 0rem;
   cursor: pointer;
   color: #b4b4b4;
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
+}
+
+@media screen and (min-width: 400px) {
+  .container li {
+    padding: 0px 1rem;
+  }
+
 }
 
 .container li:first-child {

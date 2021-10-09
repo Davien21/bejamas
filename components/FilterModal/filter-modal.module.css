@@ -22,10 +22,14 @@
   background-color: #fff;
   height: auto;
   justify-self: flex-start;
-  max-height: 70vh;
+  /* max-height: 70vh; */
   overflow: auto;
   width: 100%;
-  max-width: 350px;
+  /* max-width: 350px; */
+}
+
+.container .sort-filter-container {
+  margin-bottom: 6.5rem;
 }
 
 .close {
@@ -51,3 +55,16 @@
   cursor: pointer;
   outline: 2px solid black;
 }
+
+.container .options {
+  position: fixed;
+  bottom: 0px;
+  width: 100%;
+  background-color: #fff;
+  border-top: 4px solid #e4e4e4;
+}
+
+.container .options button {
+  height: 100%
+}
+

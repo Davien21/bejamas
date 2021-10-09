@@ -50,6 +50,7 @@ function CartWindow({ isOpen, onToggleCartWindow, cart, onSetCart }) {
       })}
       <Button
         onClick={() => {
+          if (!cart.length) return
           onSetCart([]);
           toast.error("Your Cart Was Cleared");
         }}

@@ -1,15 +1,24 @@
-import { createContext, useContext, useState } from "react";
+import { createContext, useContext, useState, useEffect } from "react";
 
 const SortingContext = createContext();
 
 export function SortingProvider({ children }) {
+  const [isCleared, setIsCleared] = useState(false);
+  
   const [sortOrder, setSortOrder] = useState("price");
   const [sortPath, setSortPath] = useState("asc");
   const [orderOptions] = useState(["price", "name"]);
 
+  useEffect(() => {
+    if (!isCleared) return;
+    setSortOrder("price");
+    setSortPath("asc");
+    setIsCleared(false);
+  }, [isCleared]);
+
   return (
     <SortingContext.Provider
-      value={{ sortOrder, setSortOrder, sortPath, setSortPath, orderOptions }}
+      value={{ sortOrder, setSortOrder, sortPath, setSortPath, orderOptions, clearSorting: () => setIsCleared(true) }}
     >
       {children}
     </SortingContext.Provider>
