@@ -15,7 +15,7 @@ const Pagination = ({ itemsCount, pageSize, onPageChange, currentPage }) => {
 
   return (
     <nav aria-label="Page navigation" className={`${styles["container"]}`}>
-      <ul className="flex items-center gap-5">
+      <ul className="flex items-center md:gap-5">
         <div
           onClick={() => onPageChange(currentPage - 1)}
           className={
