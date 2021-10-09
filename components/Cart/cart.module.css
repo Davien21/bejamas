@@ -34,10 +34,10 @@
   scrollbar-width: 10px;
 }
 
-@media screen and (min-width: 400px) {
+@media screen and (min-width: 360px) {
   .cart-window {
     max-width: 90vw;
-    min-width: 350px;
+    min-width: 336px;
     max-height: 80vh;
     overflow: auto;
     scrollbar-width: 10px;
