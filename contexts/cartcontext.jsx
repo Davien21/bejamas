@@ -1,16 +1,28 @@
-import { createContext, useContext, useState } from "react";
-import useSWR from "swr";
-
+import { createContext, useContext, useState, useEffect } from "react";
 
 const CartContext = createContext();
 
 export function CartProvider({ children }) {
-  let cartInLocalStorage = [];
-  // useEffect(() => {
-  //   localStorage.setItem("cart", cart);
-  //   cartInLocalStorage = localStorage.getItem("cart");
-  // });
-  const [cart, setCart] = useState(cartInLocalStorage);
+  const [cart, setCart] = useState([]);
+  const [isInitiallyFetched, setIsInitiallyFetched] = useState(false);
+
+  useEffect(function () {
+    let hasItemsInLS = window.localStorage.getItem("cart");
+    if (!hasItemsInLS) return setIsInitiallyFetched(true);
+
+    let cartInLS = window.localStorage.getItem("cart");
+    cartInLS = JSON.parse(cartInLS);
+    setCart(cartInLS);
+    setIsInitiallyFetched(true);
+  }, []);
+
+  useEffect(
+    function () {
+      if (isInitiallyFetched)
+        window.localStorage.setItem("cart", JSON.stringify(cart));
+    },
+    [cart]
+  );
 
   return (
     <CartContext.Provider value={{ cart, setCart }}>

@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { FilterIcon } from "../../assets/images";
-import { getCategoryFilters, getPriceFilters } from "../../utils";
+import { useFilterContext, useSortingContext } from "../../contexts";
+import FilterModal from "../FilterModal";
 import { MultipleFilter } from "../MultipleFilter";
 
 import ProductGrid from "../ProductGrid";
@@ -9,11 +10,18 @@ import { ToggleFilter } from "../ToggleFilter";
 import styles from "./products.module.css";
 
 function Products(props) {
-  const [categoryFilters, setCategoryFilters] = useState(getCategoryFilters());
-  const [activePriceFilter, setActivePriceFilter] = useState("All");
-  const [sortOrder, setSortOrder] = useState("price");
-  const [sortPath, setSortPath] = useState("asc");
-  const [orderOptions] = useState(["price", "name"]);
+  const { sortOrder, setSortOrder, sortPath, setSortPath, orderOptions } =
+    useSortingContext();
+
+  const {
+    categoryFilters,
+    setCategoryFilters,
+    activePriceFilter,
+    setActivePriceFilter,
+    priceFilters,
+  } = useFilterContext();
+
+  const [filterModal, toggleFilterModal] = useState(false);
 
   return (
     <div className={`${styles["container"]} my-5`}>
@@ -34,22 +42,31 @@ function Products(props) {
             />
           </div>
           <div className="md:hidden">
-            <FilterIcon />
+            <FilterIcon
+              className="cursor-pointer"
+              onClick={() => toggleFilterModal(!filterModal)}
+            />
+            <FilterModal
+              isOpen={filterModal}
+              onToggleModal={toggleFilterModal}
+            />
           </div>
         </div>
       </div>
       <div className="grid grid-cols-5 gap-x-8">
         <div id={`${styles["filters"]}`} className="hidden md:block col-span-1">
+          <p className="font-semibold mb-6 text-xl">Category</p>
           <MultipleFilter
             title="category"
             filters={categoryFilters}
             onFilter={setCategoryFilters}
           />
+          <p className="font-semibold mb-6 text-xl ">Price</p>
           <RadioFilter
             activeFilter={activePriceFilter}
             onFilter={setActivePriceFilter}
             title="Price"
-            filters={getPriceFilters()}
+            filters={priceFilters}
           />
         </div>
         <div id="product-grid" className="col-span-5 md:col-span-4">

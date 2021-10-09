@@ -1,10 +1,9 @@
 import Head from "next/head";
-import { Header, Products } from "../../components";
+import { Products } from "../../components";
 import styles from "./home.module.css";
 import FeaturedProduct from "../../components/FeaturedProduct";
 
 export default function Home({ cart, setCart }) {
-  console.log(cart, setCart)
   return (
     <>
       <Head>

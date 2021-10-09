@@ -6,11 +6,17 @@
   background-color: #000;
   color: #fff;
   position: absolute;
-  padding: 2px 5px;
-  font-size: 14px;
+  padding: 2px 7px;
+  font-size: 16px;
   right: 0;
   border-radius: 5px;
   z-index: 101;
+}
+
+@media screen and (min-width: 768px) {
+  .container .counter {
+    font-size: 14px;
+  }
 }
 
 .cart-window {
@@ -28,11 +34,9 @@
   scrollbar-width: 10px;
 }
 
-
 .active {
   display: block !important;
 }
-
 
 .cart-window .img-container div {
   width: 100%;
@@ -44,10 +48,8 @@
   object-fit: cover;
 }
 
-
-
-.cart-window hr{
- width: 100%;
+.cart-window hr {
+  width: 100%;
 }
 
 .close {
@@ -57,7 +59,6 @@
   z-index: 102;
   margin: 1.25rem 0rem;
 }
-
 
 .close svg {
   position: relative;

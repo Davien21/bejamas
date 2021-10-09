@@ -5,7 +5,6 @@ import styles from "./multiple-filter.module.css";
 function MultipleFilter({ title, filters, onFilter }) {
   return (
     <>
-      <p className="font-semibold mb-6 text-xl capitalize">{title}</p>
       {filters.map((filter, filterIndex) => {
         const label = Object.keys(filter)[0];
         return (

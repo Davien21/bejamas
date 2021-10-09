@@ -1,17 +1,20 @@
 import React from "react";
+import { useFilterContext } from "../../contexts";
 import RadioInput from "./RadioInput";
 
-function RadioFilter({ activeFilter, title, filters, onFilter }) {
+function RadioFilter({ title }) {
+  const { activePriceFilter, setActivePriceFilter, priceFilters: filters } =
+    useFilterContext();
+
   return (
     <>
-      <p className="font-semibold mb-6 text-xl capitalize">{title}</p>
       {filters.map((filter, filterIndex) => {
         return (
           <div key={`${filter}${filterIndex}`}>
             <RadioInput
               key={`${filter}${filterIndex}`}
-              activeFilter={activeFilter}
-              onFilter={onFilter}
+              activeFilter={activePriceFilter}
+              onFilter={setActivePriceFilter}
               filter={filter}
             />
           </div>
