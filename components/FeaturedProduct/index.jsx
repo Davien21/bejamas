@@ -2,12 +2,11 @@ import React from "react";
 import { useProducts, useToggleToCart } from "../../hooks";
 import { Button } from "../../components";
 import Image from "next/image";
-import { product1, product2, product3, product4 } from "../../assets/images";
-const fetcher = (url) => fetch(url).then((res) => res.json());
 
 import styles from "./featured-product.module.css";
 import { formatSize, getBlurPath } from "../../utils";
 import { useCartContext } from "../../contexts";
+import { Loader } from "../Loader";
 
 const FeaturedProduct = (props) => {
   const { products, isError, isLoading } = useProducts();
@@ -26,9 +25,7 @@ const FeaturedProduct = (props) => {
   return (
     <>
       {isError && <div className="text-2xl">There was an error 😭...</div>}
-      {isLoading && !featuredProduct && (
-        <div className="text-2xl my-5">Loading...</div>
-      )}
+      <Loader isLoading={isLoading} />
       {!isLoading && !isError && products.length == 0 && (
         <div className="text-2xl">There are no products in the database</div>
       )}
@@ -70,7 +67,9 @@ const FeaturedProduct = (props) => {
               <p className={`text-2xl font-semibold `}>
                 About the {featuredProduct?.name}
               </p>
-              <p className={`${styles["category"]} text-2xl my-2`}>Pets</p>
+              <p className={`${styles["category"]} text-2xl my-2`}>
+                {featuredProduct.category}
+              </p>
               <span className={`${styles["description"]}`}>
                 {featuredProduct?.description}
               </span>
