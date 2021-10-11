@@ -11,3 +11,4 @@ export * from "./RadioFilter";
 export * from "./Pagination";
 export * from "./FeaturedProduct";
 export * from "./FilterModal";
+export * from "./Loader";
