@@ -31,7 +31,7 @@ function Products(props) {
           <span className="mx-2">/</span>
           <span className={`${styles["category"]}`}>Premium Photos</span>
         </div>
-        <div id="filters">
+        <div id={`${styles["sorters"]}`}>
           <div className="hidden md:block">
             <ToggleFilter
               options={orderOptions}
