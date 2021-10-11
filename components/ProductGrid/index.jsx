@@ -6,6 +6,7 @@ import Pagination from "../Pagination";
 
 import { paginate, sortByCategory, sortByPrice } from "../../utils";
 import styles from "./product-grid.module.css";
+import { Loader } from "../Loader";
 
 function ProductGrid({
   categoryFilters,
@@ -25,9 +26,9 @@ function ProductGrid({
   return (
     <>
       {isError && <div className="text-2xl">There was an error 😭...</div>}
-      {isLoading && <div className="text-2xl">Loading...</div>}
-      {!isLoading && !isError && products.length == 0 && (
-        <div className="text-2xl">There are no such products</div>
+      <Loader isLoading={isLoading} />
+      {!isLoading && !isError && finalProducts.length == 0 && (
+        <div className="text-2xl">There are no available products</div>
       )}
       <div className="grid grid-cols-1 md:grid-cols-3 gap-x-7 md:h-full">
         {finalProducts?.map((product) => {

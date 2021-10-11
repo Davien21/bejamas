@@ -11,21 +11,25 @@ function ToggleFilter({
   sortOrder,
   onChangeOrder,
 }) {
+  let toggleOrderClass = (order) => {
+    if (sortOrder !== order) return `${styles["svg-container"]}`;
+    return `${styles["svg-container"]} ${styles["active"]}`;
+  };
   return (
     <div className="flex items-center">
       <div className="flex items-center">
         <div
           onClick={() => onChangeOrder("asc")}
-          className={`${styles["svg-container"]}`}
+          className={toggleOrderClass("asc")}
         >
-          <AscendingIcon className="cursor-pointer " />
+          <AscendingIcon />
         </div>
 
         <div
           onClick={() => onChangeOrder("desc")}
-          className={`${styles["svg-container"]}`}
+          className={toggleOrderClass("desc")}
         >
-          <DescendingIcon className="cursor-pointer" />
+          <DescendingIcon />
         </div>
       </div>
       <div className="flex items-center">

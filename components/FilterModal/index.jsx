@@ -9,8 +9,14 @@ import styles from "./filter-modal.module.css";
 import { toast } from "react-toastify";
 
 function FilterModal({ isOpen, onToggleModal }) {
-  const { sortPath, setSortPath, orderOptions, clearSorting } =
-    useSortingContext();
+  const {
+    sortPath,
+    setSortPath,
+    sortOrder,
+    setSortOrder,
+    orderOptions,
+    clearSorting,
+  } = useSortingContext();
 
   const {
     categoryFilters,
@@ -24,9 +30,10 @@ function FilterModal({ isOpen, onToggleModal }) {
   let containerClass = `${styles["container"]} `;
   if (isOpen) containerClass += `${styles["active"]}`;
 
-  // useEffect(() => {
-  //   document.body.style.overflow = isOpen ? "hidden" : "auto";
-  // }, [isOpen]);
+  let toggleOrderClass = (order) => {
+    if (sortOrder !== order) return `${styles["svg-container"]}`;
+    return `${styles["svg-container"]} ${styles["active"]}`;
+  };
 
   return (
     <>
@@ -57,19 +64,19 @@ function FilterModal({ isOpen, onToggleModal }) {
               </div>
               <div className="flex items-center gap-2">
                 <span className="mr-3 app-text-grey">Order</span>
-                <div className="ml-auto flex items-center">
-                  <div className={`${styles["svg-container"]}`}>
-                    <AscendingIcon
-                      onClick={() => onChangeOrder("asc")}
-                      className="cursor-pointer "
-                    />
+                <div className="ml-5 flex items-center">
+                  <div
+                    onClick={() => setSortOrder("asc")}
+                    className={toggleOrderClass("asc")}
+                  >
+                    <AscendingIcon />
                   </div>
 
-                  <div className={`${styles["svg-container"]}`}>
-                    <DescendingIcon
-                      onClick={() => onChangeOrder("desc")}
-                      className="cursor-pointer"
-                    />
+                  <div
+                    onClick={() => setSortOrder("desc")}
+                    className={toggleOrderClass("desc")}
+                  >
+                    <DescendingIcon />
                   </div>
                 </div>
               </div>
@@ -115,7 +122,7 @@ function FilterModal({ isOpen, onToggleModal }) {
             <Button
               onClick={() => {
                 toast.success("Your Settings are saved");
-                onToggleModal(false)
+                onToggleModal(false);
               }}
               text="Save"
             />

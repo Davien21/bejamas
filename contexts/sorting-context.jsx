@@ -4,21 +4,28 @@ const SortingContext = createContext();
 
 export function SortingProvider({ children }) {
   const [isCleared, setIsCleared] = useState(false);
-  
-  const [sortOrder, setSortOrder] = useState("price");
-  const [sortPath, setSortPath] = useState("asc");
+
+  const [sortOrder, setSortOrder] = useState("asc");
+  const [sortPath, setSortPath] = useState("price");
   const [orderOptions] = useState(["price", "name"]);
 
   useEffect(() => {
     if (!isCleared) return;
-    setSortOrder("price");
-    setSortPath("asc");
+    setSortOrder("asc");
+    setSortPath("price");
     setIsCleared(false);
   }, [isCleared]);
 
   return (
     <SortingContext.Provider
-      value={{ sortOrder, setSortOrder, sortPath, setSortPath, orderOptions, clearSorting: () => setIsCleared(true) }}
+      value={{
+        sortOrder,
+        setSortOrder,
+        sortPath,
+        setSortPath,
+        orderOptions,
+        clearSorting: () => setIsCleared(true),
+      }}
     >
       {children}
     </SortingContext.Provider>
