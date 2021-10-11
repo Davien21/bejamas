@@ -35,6 +35,10 @@ function FilterModal({ isOpen, onToggleModal }) {
     return `${styles["svg-container"]} ${styles["active"]}`;
   };
 
+  useEffect(() => {
+    document.body.style.overflow = isOpen ? "hidden" : "auto";
+  }, [isOpen]);
+
   return (
     <>
       <div className={containerClass} onClick={() => onToggleModal(false)}>
@@ -49,9 +53,9 @@ function FilterModal({ isOpen, onToggleModal }) {
           </div>
           <div className={`${styles["sort-filter-container"]}`}>
             <div id="sorting" className={`mb-8`}>
-              <p className="text-xl font-semibold mb-2">Sorting</p>
-              <div className="flex items-center mb-2">
-                <span className={`${styles["grey-font"]} mr-4 app-text-grey`}>
+              <p className="text-xl font-semibold mb-6">Sorting</p>
+              <div className="flex items-center mb-4">
+                <span className={`${styles["grey-font"]} mr-6 app-text-grey`}>
                   Sort By
                 </span>
                 <div>
@@ -82,7 +86,7 @@ function FilterModal({ isOpen, onToggleModal }) {
               </div>
             </div>
             <div id="filtering">
-              <p className="text-xl font-semibold mb-2">Filter</p>
+              <p className="text-xl font-semibold mb-6">Filter</p>
               <div id={`${styles["filters"]}`} className="col-span-1">
                 <p className="font-semibold mb-6 app-text-grey">Category</p>
 
