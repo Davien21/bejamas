@@ -46,15 +46,24 @@
   cursor: pointer;
 }
 
-.container div.svg-container {
+div.svg-container {
   padding: 0.75rem 0.875rem;
   border-radius: 0.5rem;
+  margin: 0px 3px;
 }
 
-.container div.svg-container:hover {
-  cursor: pointer;
+div.svg-container.active {
+  padding: 0.75rem 0.875rem;
+  border-radius: 0.5rem;
   outline: 2px solid black;
+  cursor: pointer;
 }
+
+div.svg-container:hover:not(.active) {
+  cursor: pointer;
+  outline: 1px solid black;
+}
+
 
 .container .options {
   position: fixed;
