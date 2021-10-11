@@ -1,5 +1,4 @@
 import React from "react";
-import PropTypes from "prop-types";
 import _ from "lodash";
 
 import styles from "./pagination.module.css";
@@ -10,7 +9,7 @@ const Pagination = ({ itemsCount, pageSize, onPageChange, currentPage }) => {
   let listClass = (page) => (page == currentPage ? styles["active"] : "");
 
   if (pagesCount === 1) return null;
-  // if (itemsCount == 0) return null;
+  if (itemsCount == 0) return null;
   const pages = _.range(1, pagesCount + 1);
 
   return (
@@ -26,7 +25,7 @@ const Pagination = ({ itemsCount, pageSize, onPageChange, currentPage }) => {
         </div>
         {pages.map((page) => (
           <li
-            key={page}
+            key={`${page}/${pagesCount}`}
             className={`${listClass(page)} text-2xl`}
             onClick={() => onPageChange(page)}
           >
