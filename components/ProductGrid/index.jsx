@@ -1,5 +1,5 @@
 import _ from "lodash";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useProducts } from "../../hooks";
 import { ProductCard } from "../ProductCard";
 import Pagination from "../Pagination";
@@ -15,7 +15,12 @@ function ProductGrid({
   sortOrder,
 }) {
   const [currentPage, setCurrentPage] = useState(1);
-  let { products, isError, isLoading } = useProducts();
+
+  useEffect(() => {
+    setCurrentPage(1);
+  }, [categoryFilters, activePriceFilter, sortPath, sortOrder]);
+
+  const { products, isError, isLoading } = useProducts();
 
   let sortedProducts = sortByCategory(categoryFilters, products);
   sortedProducts = sortByPrice(activePriceFilter, sortedProducts);
@@ -23,6 +28,7 @@ function ProductGrid({
   sortedProducts = _.orderBy(sortedProducts, [sortPath], [sortOrder]);
 
   const finalProducts = paginate(sortedProducts, currentPage, 6);
+
   return (
     <>
       {isError && <div className="text-2xl">There was an error 😭...</div>}
