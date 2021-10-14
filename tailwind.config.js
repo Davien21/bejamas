@@ -13,16 +13,6 @@ module.exports = {
         // xl: "5rem",
         "2xl": "6rem",
       },
-      flex: {
-        1: "1 1 0%",
-        auto: "1 1 auto",
-        initial: "0 1 auto",
-        inherit: "inherit",
-        none: "none",
-        2: "2 2 0%",
-        3: "3 3 0%",
-        3: "12 12 0%",
-      },
     },
   },
   variants: {
