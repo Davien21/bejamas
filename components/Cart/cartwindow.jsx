@@ -5,7 +5,7 @@ import { toast } from "react-toastify";
 import styles from "./cart.module.css";
 import { getBlurPath } from "../../utils";
 import { Button } from "../Button";
-import { CartIcon, CloseIcon } from "../../assets/images";
+import {  CloseIcon } from "../../assets/images";
 
 function CartWindow({ isOpen, onToggleCartWindow, cart, onSetCart }) {
   let windowClasses = `${styles["cart-window"]} `;

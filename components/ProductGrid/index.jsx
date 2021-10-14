@@ -5,7 +5,6 @@ import { ProductCard } from "../ProductCard";
 import Pagination from "../Pagination";
 
 import { paginate, sortByCategory, sortByPrice } from "../../utils";
-import styles from "./product-grid.module.css";
 import { Loader } from "../Loader";
 
 function ProductGrid({

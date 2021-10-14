@@ -4,7 +4,6 @@ import Image from "next/image";
 import { Button } from "../Button";
 import { getBlurPath } from "../../utils";
 import { useCartContext } from "../../contexts";
-import { toast } from "react-toastify";
 import { useToggleToCart } from "../../hooks";
 
 function ProductCard({ product }) {

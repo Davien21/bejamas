@@ -1,6 +1,5 @@
 import React from "react";
 import MultipleInput from "./MultipleInput";
-import styles from "./multiple-filter.module.css";
 
 function MultipleFilter({ title, filters, onFilter }) {
   return (

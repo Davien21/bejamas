@@ -1,7 +1,7 @@
 import React from "react";
 
 import styles from "./header.module.css";
-import { CartIcon, LogoIcon } from "../../assets/images";
+import { LogoIcon } from "../../assets/images";
 import Cart from "../Cart";
 
 function Header() {
@@ -17,7 +17,6 @@ function Header() {
           </div>
         </div>
         <hr className="hr-lg" />
-        {/* <div></div> */}
       </div>
     </div>
   );
