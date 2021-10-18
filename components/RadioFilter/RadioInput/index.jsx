@@ -1,4 +1,3 @@
-import React from "react";
 import { CheckboxIcon } from "../../../assets/images";
 import styles from "./radio-input.module.css";
 

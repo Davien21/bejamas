@@ -1,4 +1,3 @@
-import React from "react";
 import { AscendingIcon, DescendingIcon } from "../../assets/images";
 import { useSortingContext } from "../../contexts";
 import SelectBox from "../SelectBox";

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { CheckboxIcon } from "../../../assets/images";
 import styles from "./multiple-input.module.css";
 

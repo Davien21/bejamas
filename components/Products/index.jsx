@@ -1,8 +1,7 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { FilterIcon } from "../../assets/images";
 import FilterModal from "../FilterModal";
 import { MultipleFilter } from "../MultipleFilter";
-
 import ProductGrid from "../ProductGrid";
 import RadioFilter from "../RadioFilter";
 import { ToggleFilter } from "../ToggleFilter";

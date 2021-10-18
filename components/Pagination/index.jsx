@@ -1,4 +1,3 @@
-import React from "react";
 
 import styles from "./pagination.module.css";
 import { LeftIcon, RightIcon } from "../../assets/images";

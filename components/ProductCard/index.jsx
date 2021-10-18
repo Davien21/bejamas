@@ -1,4 +1,3 @@
-import React from "react";
 import styles from "./product-card.module.css";
 import Image from "next/image";
 import { Button } from "../Button";

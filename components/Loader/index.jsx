@@ -1,4 +1,3 @@
-import React from "react";
 
 function Loader({ isLoading }) {
   return isLoading && <div className="text-2xl">Loading...</div>;

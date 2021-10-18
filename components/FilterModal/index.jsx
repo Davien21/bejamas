@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import { useEffect } from "react";
 import { AscendingIcon, CloseIcon, DescendingIcon } from "../../assets/images";
 import { useFilterContext, useSortingContext } from "../../contexts";
 import { Button } from "../Button";

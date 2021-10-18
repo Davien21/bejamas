@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { useProducts } from "../../hooks";
 import { ProductCard } from "../ProductCard";
 import Pagination from "../Pagination";

@@ -1,4 +1,3 @@
-import React from "react";
 import { useProducts, useToggleToCart } from "../../hooks";
 import { Button } from "../../components";
 import Image from "next/image";

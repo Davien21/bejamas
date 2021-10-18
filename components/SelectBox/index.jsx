@@ -1,5 +1,3 @@
-import React from "react";
-
 function SelectBox({ options, selectedOption, onChangeOption }) {
   return (
     <div>
