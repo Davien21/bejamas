@@ -1,8 +1,8 @@
-@import "tailwindcss/base";
+@tailwindcss /base;
 
-@import "tailwindcss/components";
+@tailwindcss /components;
 
-@import "tailwindcss/utilities";
+@tailwindcss /utilities;
 
 @import url(https://fonts.googleapis.com/css?family=Archivo:300,400,500,550,600,900);
 
@@ -20,10 +20,17 @@
     sans-serif;
 }
 
-*:not(*:hover) {
+*:not(*:hover, *:hover *) {
   -webkit-transition: 0.2s all ease-in-out;
   -o-transition: 0.2s all ease-in-out;
   transition: 0.2s all ease-in-out;
+}
+
+*:focus {
+  transition: 0.1s all ease-in-out;
+  outline: 2px dotted;
+  outline-color: #000;
+  opacity: 1 !important;
 }
 
 ul,
