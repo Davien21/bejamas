@@ -1,4 +1,3 @@
-import { useState } from "react";
 import "tailwindcss/tailwind.css";
 import { Header } from "../components";
 import { CartProvider } from "../contexts/cartcontext";
