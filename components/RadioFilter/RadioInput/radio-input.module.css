@@ -2,11 +2,6 @@
   display: none;
 }
 
-.container .checkbox {
-  margin-right: 20px;
-  
-}
-
 .container .checkbox.false path:last-child {
   display: none;
 }

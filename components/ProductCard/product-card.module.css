@@ -1,17 +1,19 @@
+.container .image {
+  display: flex;
+}
+
 .container .image div {
   width: 100%;
   min-height: 350px;
   height: 100%;
 }
 
-@media screen and (min-width: 768px) {
-  .container .image div {
-    /* min-height: auto; */
-  }
+.container:focus-within .button-container {
+  opacity: 1 !important;
 }
 
 @media screen and (min-width: 768px) {
-  .button-container {
+  .container .button-container {
     transition: opacity 0.3s ease-in-out;
     opacity: 0;
   }
