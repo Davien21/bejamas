@@ -10,4 +10,18 @@ module.exports = {
   images: {
     domains: ["res.cloudinary.com"],
   },
+  async redirects() {
+    return [
+      {
+        source: "/home",
+        destination: "/",
+        permanent: true,
+      },
+      {
+        source: "/index",
+        destination: "/",
+        permanent: true,
+      },
+    ];
+  },
 };
