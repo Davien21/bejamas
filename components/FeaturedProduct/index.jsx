@@ -49,6 +49,7 @@ const FeaturedProduct = () => {
             <div className="grid grid-cols-1 order-2 md:order-3 col-span-full mb-6 md:mb-0 relative row-start-2">
               <div className={`${styles["image"]}`}>
                 <Image
+                  priority="true"
                   alt={featuredProduct?.image?.alt}
                   src={featuredProduct?.image?.src}
                   width="1920"
@@ -82,7 +83,6 @@ const FeaturedProduct = () => {
                 {recommendations.map((product) => {
                   return (
                     <Image
-                      priority="true"
                       key={product.name}
                       className="h-full"
                       alt={product.image.alt}
