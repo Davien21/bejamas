@@ -36,4 +36,17 @@ function sortByCategory(filters, products) {
   return sortedProducts;
 }
 
-export { sortByPrice, sortByCategory };
+function sortByOrderAndPath(items, order, path) {
+  if (path === "price") {
+    if (order === "asc") return items.sort((a, b) => a[path] - b[path]);
+    return items.sort((a, b) => b[path] - a[path]);
+  }
+  if (path === "name") {
+    if (order === "asc")
+      return items.sort((a, b) => a[path].localeCompare(b[path]));
+
+    return items.sort((a, b) => b[path].localeCompare(a[path]));
+  }
+}
+
+export { sortByPrice, sortByCategory, sortByOrderAndPath };
