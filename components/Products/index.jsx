@@ -43,7 +43,7 @@ function Products() {
           <RadioFilter />
         </div>
         <div id="product-grid" className="col-span-5 md:col-span-4">
-          <ProductGrid featuredProducts={featuredProducts} />
+          <ProductGrid />
         </div>
       </div>
     </div>
