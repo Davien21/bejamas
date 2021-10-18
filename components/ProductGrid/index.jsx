@@ -1,32 +1,26 @@
-import _ from "lodash";
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { useProducts } from "../../hooks";
 import { ProductCard } from "../ProductCard";
 import Pagination from "../Pagination";
 
-import { paginate, sortByCategory, sortByPrice } from "../../utils";
+import { sortByCategory, sortByOrderAndPath, sortByPrice } from "../../utils";
 import { Loader } from "../Loader";
+import { useFilterContext, useSortingContext } from "../../contexts";
+import _ from "../../utils/custom-lodash";
 
-function ProductGrid({
-  categoryFilters,
-  activePriceFilter,
-  sortPath,
-  sortOrder,
-}) {
+function ProductGrid() {
+  const { sortOrder, sortPath } = useSortingContext();
+  const { categoryFilters, activePriceFilter } = useFilterContext();
   const [currentPage, setCurrentPage] = useState(1);
-
-  useEffect(() => {
-    setCurrentPage(1);
-  }, [categoryFilters, activePriceFilter, sortPath, sortOrder]);
 
   const { products, isError, isLoading } = useProducts();
 
   let sortedProducts = sortByCategory(categoryFilters, products);
   sortedProducts = sortByPrice(activePriceFilter, sortedProducts);
 
-  sortedProducts = _.orderBy(sortedProducts, [sortPath], [sortOrder]);
+  sortedProducts = sortByOrderAndPath(sortedProducts, sortOrder, sortPath);
 
-  const finalProducts = paginate(sortedProducts, currentPage, 6);
+  const finalProducts = _.paginate(sortedProducts, currentPage, 6);
 
   return (
     <>
@@ -37,11 +31,7 @@ function ProductGrid({
       )}
       <div className="grid grid-cols-1 md:grid-cols-3 gap-x-7 md:h-full">
         {finalProducts?.map((product) => {
-          return (
-            <div key={product.id} className="">
-              <ProductCard product={product} />
-            </div>
-          );
+          return <ProductCard key={product.id} product={product} />;
         })}
         <div className="flex flex-col justify-end mx-auto mb-10 md:col-span-3">
           <Pagination
