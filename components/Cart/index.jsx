@@ -11,11 +11,14 @@ function Cart() {
 
   return (
     <div className={`${styles["container"]}`}>
-      <div title="Your cart">
-        <CartIcon
-          className="cursor-pointer mr-4"
+      <div>
+        <button
+          className="mr-4"
+          title="Your cart"
           onClick={() => toggleCartWindow(!cartWindow)}
-        />
+        >
+          <CartIcon />
+        </button>
         {cart?.length > 0 && (
           <div className={`${styles["counter"]}`}>{cart?.length}</div>
         )}
