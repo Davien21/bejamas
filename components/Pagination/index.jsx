@@ -1,8 +1,8 @@
 import React from "react";
-import _ from "lodash";
 
 import styles from "./pagination.module.css";
 import { LeftIcon, RightIcon } from "../../assets/images";
+import _ from "../../utils/custom-lodash";
 
 const Pagination = ({ itemsCount, pageSize, onPageChange, currentPage }) => {
   const pagesCount = Math.ceil(itemsCount / pageSize);
@@ -10,36 +10,39 @@ const Pagination = ({ itemsCount, pageSize, onPageChange, currentPage }) => {
 
   if (pagesCount === 1) return null;
   if (itemsCount == 0) return null;
-  const pages = _.range(1, pagesCount + 1);
+  const pages = _.range(1, pagesCount);
 
   return (
     <nav aria-label="Page navigation" className={`${styles["container"]}`}>
       <ul className="flex items-center md:gap-5">
-        <div
+        <button
+          aria-label="Previous"
           onClick={() => onPageChange(currentPage - 1)}
           className={
             currentPage === 1 ? "hidden" : `${styles["svg-container"]}`
           }
         >
           <LeftIcon />
-        </div>
+        </button>
         {pages.map((page) => (
           <li
             key={`${page}/${pagesCount}`}
             className={`${listClass(page)} text-2xl`}
-            onClick={() => onPageChange(page)}
           >
-            <a className="page-link">{page}</a>
+            <button onClick={() => onPageChange(page)} className="">
+              {page}
+            </button>
           </li>
         ))}
-        <div
+        <button
+          aria-label="Next"
           onClick={() => onPageChange(currentPage + 1)}
           className={
             currentPage == pagesCount ? "hidden" : `${styles["svg-container"]}`
           }
         >
           <RightIcon />
-        </div>
+        </button>
       </ul>
     </nav>
   );

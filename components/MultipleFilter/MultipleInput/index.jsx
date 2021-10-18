@@ -15,11 +15,11 @@ function MultipleInput({ filter, allFilters, onFilter, label, filterIndex }) {
     <div
       className={`${styles.container} cursor-pointer flex items-center mb-5`}
     >
-      <CheckboxIcon
-        className={`${styles["checkbox"]} ${styles[isChecked]}`}
-        onClick={() => toggleIsChecked()}
-      />
-
+      <button className="mr-5" onClick={() => toggleIsChecked()}>
+        <CheckboxIcon
+          className={`${styles["checkbox"]} ${styles[isChecked]}`}
+        />
+      </button>
       <input
         type="checkbox"
         name={filter}
