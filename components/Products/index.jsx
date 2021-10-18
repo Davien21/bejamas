@@ -23,7 +23,10 @@ function Products() {
             <ToggleFilter />
           </div>
           <div className="md:hidden">
-            <button onClick={() => toggleFilterModal(!filterModal)}>
+            <button
+              aria-label="Open Filter Modal"
+              onClick={() => toggleFilterModal(!filterModal)}
+            >
               <FilterIcon className="cursor-pointer" />
             </button>
             <FilterModal
