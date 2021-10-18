@@ -8,7 +8,7 @@ import { formatSize, getBlurPath } from "../../utils";
 import { useCartContext } from "../../contexts";
 import { Loader } from "../Loader";
 
-const FeaturedProduct = (props) => {
+const FeaturedProduct = () => {
   const { products, isError, isLoading } = useProducts();
   const featuredProduct = products?.find((product) => product.featured);
   const category = featuredProduct?.category;
@@ -50,6 +50,7 @@ const FeaturedProduct = (props) => {
             <div className="grid grid-cols-1 order-2 md:order-3 col-span-full mb-6 md:mb-0 relative row-start-2">
               <div className={`${styles["image"]}`}>
                 <Image
+                  alt={featuredProduct?.image?.alt}
                   src={featuredProduct?.image?.src}
                   width="1920"
                   height="1280"

@@ -29,11 +29,11 @@ function ProductGrid() {
       {!isLoading && !isError && finalProducts.length == 0 && (
         <div className="text-2xl">There are no available products</div>
       )}
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-x-7 md:h-full">
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-x-7 md:h-full">
         {finalProducts?.map((product) => {
           return <ProductCard key={product.id} product={product} />;
         })}
-        <div className="flex flex-col justify-end mx-auto mb-10 md:col-span-3">
+        <div className="flex flex-col justify-end mx-auto mb-10 sm:col-span-2 md:col-span-3">
           <Pagination
             itemsCount={sortedProducts?.length}
             pageSize={6}

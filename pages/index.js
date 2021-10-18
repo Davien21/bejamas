@@ -1,8 +1,10 @@
 import Head from "next/head";
 import { Products } from "../components";
 import FeaturedProduct from "../components/FeaturedProduct";
+import { SWRConfig } from "swr";
+import { getproducts } from "../services";
 
-function IndexPage({}) {
+function IndexPage({ fallback }) {
   return (
     <>
       <Head>
@@ -19,21 +21,36 @@ function IndexPage({}) {
         ></meta>
         <title>Bejamas Store | Home</title>
       </Head>
-      <main>
-        <section id="featured-product">
-          <div className="container py-5">
-            <FeaturedProduct />
-            <hr className="mt-10 hr-lg" />
-          </div>
-        </section>
-        <section>
-          <div className="container">
-            <Products />
-          </div>
-        </section>
-      </main>
+      <SWRConfig value={{ fallback }}>
+        <main>
+          <section id="featured-product">
+            <div className="container py-5">
+              <FeaturedProduct />
+              <hr className="mt-10 hr-lg" />
+            </div>
+          </section>
+          <section>
+            <div className="container">
+              <Products />
+            </div>
+          </section>
+        </main>
+      </SWRConfig>
     </>
   );
+}
+
+export async function getServerSideProps(context) {
+  const basePath = context.req.headers.referer;
+  const products = await getproducts(basePath);
+  const a = {
+    props: {
+      fallback: {
+        "/api/products": products,
+      },
+    },
+  };
+  return a;
 }
 
 export default IndexPage;
