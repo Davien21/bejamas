@@ -10,9 +10,7 @@ function RadioInput({ filter, activeFilter, onFilter, filterIndex }) {
   };
 
   return (
-    <div
-      className={`${styles.container} cursor-pointer flex items-center mb-5`}
-    >
+    <div className={`${styles.container} flex items-center mb-5`}>
       <button
         aria-label={`Filter by ${filter}`}
         className="mr-5"
@@ -22,19 +20,16 @@ function RadioInput({ filter, activeFilter, onFilter, filterIndex }) {
           className={`${styles["checkbox"]} ${styles[isChecked]}`}
         />
       </button>
-      <input
-        type="checkbox"
-        name={filter}
-        id={filter}
-        value={isChecked}
-        checked={isChecked}
-        onChange={() => {}}
-      />
-      <label
-        className="capitalize cursor-pointer"
-        onClick={() => toggleIsChecked()}
-      >
-        {filter}
+      <label className="capitalize cursor-pointer">
+        <input
+          type="checkbox"
+          name={filter}
+          id={filter}
+          value={isChecked}
+          checked={isChecked}
+          onChange={() => toggleIsChecked()}
+        />
+        <span>{filter}</span>
       </label>
     </div>
   );

@@ -4,7 +4,7 @@ import { toast } from "react-toastify";
 import styles from "./cart.module.css";
 import { getBlurPath } from "../../utils";
 import { Button } from "../Button";
-import {  CloseIcon } from "../../assets/images";
+import { CloseIcon } from "../../assets/images";
 
 function CartWindow({ isOpen, onToggleCartWindow, cart, onSetCart }) {
   let windowClasses = `${styles["cart-window"]} `;
@@ -13,7 +13,9 @@ function CartWindow({ isOpen, onToggleCartWindow, cart, onSetCart }) {
   return (
     <div className={windowClasses}>
       <div className={`${styles["close"]} flex justify-end w-full`}>
-        <CloseIcon onClick={() => onToggleCartWindow(false)} />
+        <button onClick={() => onToggleCartWindow(false)}>
+          <CloseIcon />
+        </button>
       </div>
       {cart.length == 0 && <div className="mb-5">No Items in the Cart</div>}
       {cart.map((item) => {
@@ -49,7 +51,7 @@ function CartWindow({ isOpen, onToggleCartWindow, cart, onSetCart }) {
       })}
       <Button
         onClick={() => {
-          if (!cart.length) return
+          if (!cart.length) return;
           onSetCart([]);
           toast.error("Your Cart Was Cleared");
         }}

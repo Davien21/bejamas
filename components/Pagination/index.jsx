@@ -1,4 +1,3 @@
-
 import styles from "./pagination.module.css";
 import { LeftIcon, RightIcon } from "../../assets/images";
 import _ from "../../utils/custom-lodash";
@@ -15,7 +14,7 @@ const Pagination = ({ itemsCount, pageSize, onPageChange, currentPage }) => {
     <nav aria-label="Page navigation" className={`${styles["container"]}`}>
       <div className="flex items-center md:gap-5">
         <button
-          aria-label="Previous"
+          aria-label="Previous Products"
           onClick={() => onPageChange(currentPage - 1)}
           className={
             currentPage === 1 ? "hidden" : `${styles["svg-container"]}`
@@ -33,7 +32,7 @@ const Pagination = ({ itemsCount, pageSize, onPageChange, currentPage }) => {
           </button>
         ))}
         <button
-          aria-label="Next"
+          aria-label="Next Products"
           onClick={() => onPageChange(currentPage + 1)}
           className={
             currentPage == pagesCount ? "hidden" : `${styles["svg-container"]}`

@@ -49,7 +49,9 @@ function FilterModal({ isOpen, onToggleModal }) {
           <div
             className={`${styles["close"]} inline-block left-full justify-end`}
           >
-            <CloseIcon onClick={() => onToggleModal(false)} />
+            <button onClick={() => onToggleModal(false)}>
+              <CloseIcon />
+            </button>
           </div>
           <div className={`${styles["sort-filter-container"]}`}>
             <div id="sorting" className={`mb-8`}>
@@ -69,19 +71,21 @@ function FilterModal({ isOpen, onToggleModal }) {
               <div className="flex items-center gap-2">
                 <span className="mr-3 app-text-grey">Order</span>
                 <div className="ml-5 flex items-center">
-                  <div
+                  <button
+                    aria-label="Sort in Ascending Order"
                     onClick={() => setSortOrder("asc")}
                     className={toggleOrderClass("asc")}
                   >
                     <AscendingIcon />
-                  </div>
+                  </button>
 
-                  <div
+                  <button
+                    aria-label="Sort in Ascending Order"
                     onClick={() => setSortOrder("desc")}
                     className={toggleOrderClass("desc")}
                   >
                     <DescendingIcon />
-                  </div>
+                  </button>
                 </div>
               </div>
             </div>

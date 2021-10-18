@@ -23,10 +23,9 @@ function Products() {
             <ToggleFilter />
           </div>
           <div className="md:hidden">
-            <FilterIcon
-              className="cursor-pointer"
-              onClick={() => toggleFilterModal(!filterModal)}
-            />
+            <button onClick={() => toggleFilterModal(!filterModal)}>
+              <FilterIcon className="cursor-pointer" />
+            </button>
             <FilterModal
               isOpen={filterModal}
               onToggleModal={toggleFilterModal}
