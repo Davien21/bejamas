@@ -8,7 +8,7 @@ import RadioFilter from "../RadioFilter";
 import { ToggleFilter } from "../ToggleFilter";
 import styles from "./products.module.css";
 
-function Products(props) {
+function Products() {
   const [filterModal, toggleFilterModal] = useState(false);
 
   return (
@@ -43,7 +43,7 @@ function Products(props) {
           <RadioFilter />
         </div>
         <div id="product-grid" className="col-span-5 md:col-span-4">
-          <ProductGrid />
+          <ProductGrid featuredProducts={featuredProducts} />
         </div>
       </div>
     </div>

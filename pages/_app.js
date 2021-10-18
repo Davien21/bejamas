@@ -14,7 +14,7 @@ function MyApp({ Component, pageProps }) {
         <Header />
         <SortingProvider>
           <FilterProvider>
-            <Component />
+            <Component {...pageProps} />
           </FilterProvider>
         </SortingProvider>
       </CartProvider>
