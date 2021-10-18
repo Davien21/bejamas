@@ -2,7 +2,7 @@ import React from "react";
 import { useFilterContext } from "../../contexts";
 import RadioInput from "./RadioInput";
 
-function RadioFilter({ title }) {
+function RadioFilter() {
   const { activePriceFilter, setActivePriceFilter, priceFilters: filters } =
     useFilterContext();
 

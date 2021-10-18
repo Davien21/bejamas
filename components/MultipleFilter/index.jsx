@@ -1,7 +1,9 @@
 import React from "react";
+import { useFilterContext } from "../../contexts";
 import MultipleInput from "./MultipleInput";
 
-function MultipleFilter({ title, filters, onFilter }) {
+function MultipleFilter() {
+  const { categoryFilters: filters, setCategoryFilters } = useFilterContext();
   return (
     <>
       {filters.map((filter, filterIndex) => {
@@ -11,7 +13,7 @@ function MultipleFilter({ title, filters, onFilter }) {
             <MultipleInput
               key={`${filter}${filterIndex}`}
               allFilters={filters}
-              onFilter={onFilter}
+              onFilter={setCategoryFilters}
               filter={filter}
               label={label}
               filterIndex={filterIndex}
