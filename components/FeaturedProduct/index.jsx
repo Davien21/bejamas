@@ -32,14 +32,14 @@ const FeaturedProduct = () => {
         <div className={""}>
           <div
             id={`${styles["photo-of-the-day"]}`}
-            className={`mb-10 grid grid-cols-6 xl:grid-cols-9 md:justify-between items-center`}
+            className={`mb-10 grid grid-cols-6 md:justify-between items-center`}
           >
-            <div className="order-1 col-span-full md:col-span-4 xl:col-span-7 my-6 ">
+            <div className="order-1 col-span-full md:col-span-3 my-6 ">
               <span className="text-2xl md:text-4xl font-semibold">
                 {featuredProduct?.name}
               </span>
             </div>
-            <div className="order-3 md:order-2 col-span-full md:col-span-2 xl:col-span-2">
+            <div className="order-3 md:order-2 col-span-full md:col-span-2 md:col-start-5 xl:col-start-6">
               <Button
                 onClick={() => toggleCart()}
                 text={isInCart ? "Remove From Cart" : "Add to Cart"}
