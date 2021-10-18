@@ -52,8 +52,7 @@ const FeaturedProduct = () => {
                   priority="true"
                   alt={featuredProduct?.image?.alt}
                   src={featuredProduct?.image?.src}
-                  width="1920"
-                  height="1280"
+                  layout="fill"
                   placeholder="blur"
                   blurDataURL={getBlurPath(featuredProduct?.image?.src)}
                 />
