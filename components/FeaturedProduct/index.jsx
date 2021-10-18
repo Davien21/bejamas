@@ -82,8 +82,10 @@ const FeaturedProduct = (props) => {
                 {recommendations.map((product) => {
                   return (
                     <Image
+                      priority="true"
                       key={product.name}
                       className="h-full"
+                      alt={product.image.alt}
                       src={product.image.src}
                       width="640"
                       height="800"
