@@ -9,7 +9,7 @@ function Header() {
     <div className={`${styles["container"]}`}>
       <div className="container">
         <div className="flex flex-wrap justify-between pt-6 pb-4 items-center relative">
-          <div tabIndex="0" aria-label="Bejamas Logo">
+          <div >
             <LogoIcon />
           </div>
           <div>

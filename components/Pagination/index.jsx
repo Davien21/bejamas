@@ -14,7 +14,7 @@ const Pagination = ({ itemsCount, pageSize, onPageChange, currentPage }) => {
 
   return (
     <nav aria-label="Page navigation" className={`${styles["container"]}`}>
-      <ul className="flex items-center md:gap-5">
+      <div className="flex items-center md:gap-5">
         <button
           aria-label="Previous"
           onClick={() => onPageChange(currentPage - 1)}
@@ -25,14 +25,13 @@ const Pagination = ({ itemsCount, pageSize, onPageChange, currentPage }) => {
           <LeftIcon />
         </button>
         {pages.map((page) => (
-          <li
+          <button
+            onClick={() => onPageChange(page)}
             key={`${page}/${pagesCount}`}
             className={`${listClass(page)} text-2xl`}
           >
-            <button onClick={() => onPageChange(page)} className="">
-              {page}
-            </button>
-          </li>
+            {page}
+          </button>
         ))}
         <button
           aria-label="Next"
@@ -43,7 +42,7 @@ const Pagination = ({ itemsCount, pageSize, onPageChange, currentPage }) => {
         >
           <RightIcon />
         </button>
-      </ul>
+      </div>
     </nav>
   );
 };
