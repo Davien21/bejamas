@@ -14,10 +14,7 @@ function Products(props) {
   return (
     <div className={`${styles["container"]} my-5`}>
       <div className="flex justify-between gap-1 items-center mb-10">
-        <div
-          ref={productsHeaderRef}
-          className="text-xl md:text-2xl flex flex-wrap"
-        >
+        <div className="text-xl md:text-2xl flex flex-wrap">
           <span className="font-semibold">Photography</span>
           <span className="mx-2">/</span>
           <span className={`${styles["category"]}`}>Premium Photos</span>
