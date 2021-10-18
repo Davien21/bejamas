@@ -40,9 +40,8 @@ function IndexPage({ fallback }) {
   );
 }
 
-export async function getServerSideProps(context) {
-  const basePath = context.req.headers.referer;
-  const products = await getproducts(basePath);
+export async function getServerSideProps() {
+  const products = await getproducts();
   const a = {
     props: {
       fallback: {

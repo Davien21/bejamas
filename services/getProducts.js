@@ -1,5 +1,5 @@
-const getproducts = async (basePath) => {
-  const url = basePath + "/api/products";
+const getproducts = async () => {
+  const url = process.env.basePath + "/api/products";
   let data = await fetch(url);
   data = await data.json();
 
