@@ -40,7 +40,7 @@ function IndexPage({ fallback }) {
   );
 }
 
-export async function getStaticProps() {
+export async function getServerSideProps() {
   const products = await getproducts();
   const a = {
     props: {
